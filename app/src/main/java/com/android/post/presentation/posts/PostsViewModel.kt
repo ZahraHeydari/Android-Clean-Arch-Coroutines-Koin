@@ -8,10 +8,8 @@ import com.android.post.data.model.Post
 import com.android.post.domain.usecase.GetPostsUseCase
 import com.android.post.domain.usecase.base.UseCaseResponse
 import io.reactivex.disposables.CompositeDisposable
-import javax.inject.Inject
 
-
-class PostsViewModel @Inject constructor(private val getPostsUseCase: GetPostsUseCase) : ViewModel() {
+class PostsViewModel constructor(private val getPostsUseCase: GetPostsUseCase) : ViewModel() {
 
     private val TAG = PostsViewModel::class.java.name
     private val compositeDisposable: CompositeDisposable = CompositeDisposable()

@@ -51,12 +51,16 @@ dependencies {
     implementation 'io.reactivex.rxjava2:rxjava:2.2.6'
     implementation 'com.squareup.retrofit2:adapter-rxjava2:2.5.0'
 
-    //Dagger Libs
-    implementation "com.google.dagger:dagger:$daggerLibVersion"
-    kapt "com.google.dagger:dagger-compiler:$daggerLibVersion"
-    implementation "com.google.dagger:dagger-android:$daggerAndroidLibVersion"
-    implementation "com.google.dagger:dagger-android-support:$daggerAndroidLibVersion"
-    kapt "com.google.dagger:dagger-android-processor:$daggerLibVersion"
+    //Koin
+    implementation 'org.koin:koin-core:2.0.1'
+    implementation 'org.koin:koin-android:2.0.1'
+    implementation 'org.koin:koin-android-viewmodel:2.0.1'
+    implementation "org.koin:koin-android-architecture:0.8.2"
+
+
+    //Coroutines Libs
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.2.0-alpha'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.2.0-alpha'
 
     //Test Libs
     testImplementation 'junit:junit:4.12'

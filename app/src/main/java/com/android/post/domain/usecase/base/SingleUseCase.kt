@@ -6,24 +6,20 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.async
+import kotlinx.coroutines.launch
 
-abstract class SingleUseCase<R, T>(private val apiErrorHandle: ApiErrorHandle) : UseCase<R, Single<T>>() {
+abstract class SingleUseCase<out Type, in Params> where Type : Any {
 
-    fun execute(
-        compositeDisposable: CompositeDisposable,
-        input: R?,
-        onResponse: UseCaseResponse<T>
-    ): Disposable {
-        return this.execute(input)
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe({
-                onResponse.onSuccess(it)
-            }, {
-                onResponse.onError(it, apiErrorHandle.traceErrorException(it))
-            }).also {
-                compositeDisposable.add(it)
-            }
+    abstract suspend fun run(params: Params): Either<Failure, Type>
+
+    open operator fun invoke(
+        scope: CoroutineScope,
+        params: Params,
+        onResult: (Either<Failure, Type>) -> Unit = {}
+    ) {
+        val backgroundJob = scope.async { run(params) }
+        scope.launch { onResult(backgroundJob.await()) }
     }
-
 }

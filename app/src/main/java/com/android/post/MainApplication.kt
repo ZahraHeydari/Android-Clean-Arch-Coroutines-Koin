@@ -1,29 +1,28 @@
 package com.android.post
 
-import android.app.Activity
 import android.app.Application
 import androidx.multidex.MultiDex
-import com.android.post.di.component.DaggerApplicationComponent
-import dagger.android.DispatchingAndroidInjector
-import dagger.android.HasActivityInjector
-import javax.inject.Inject
+import com.android.post.di.module.PostModule
+import org.koin.android.ext.koin.androidContext
+import org.koin.android.ext.koin.androidLogger
+import org.koin.core.context.startKoin
 
-class MainApplication : Application(), HasActivityInjector {
+
+class MainApplication : Application() {
 
     private val TAG = MainApplication::class.java.simpleName
-    @Inject
-    lateinit var activityInjector: DispatchingAndroidInjector<Activity>
 
     override fun onCreate() {
         super.onCreate()
         MultiDex.install(this)
 
-        DaggerApplicationComponent
-            .builder()
-            .application(this)
-            .build()
-            .inject(this)
-    }
 
-    override fun activityInjector() = activityInjector
+        // Start Koin
+        startKoin {
+            androidLogger()
+            androidContext(this@MainApplication)
+            modules(PostModule)
+        }
+
+    }
 }
