@@ -3,7 +3,15 @@
 A Simple Android Mobile Application which has been implemented using Clean Architecture alongside MVVM design.
 
 
-### Clean Arch ### Coroutines ###Koin ###MVVM ###LiveData
+### Technologies & Methodologies which used:
+
+- Koin
+- Coroutines
+- Clean Architecture
+- MVVM Pattern
+- LiveData
+- Espresso
+- Mockito
 
 
 ### The App Scenario
@@ -25,14 +33,6 @@ android versions targeted:
 1. [GitHub](http://square.github.io/retrofit/) - retrofit
 2. [GitHub](https://github.com/google/gson) - gson
 3. [Github](https://github.com/casidiablo/multidex) - Multidex
-
-
-### Technologies which used:
-
-- Koin
-- Coroutines
-- Espresso
-- Mockito
 
 
 ## Version History
