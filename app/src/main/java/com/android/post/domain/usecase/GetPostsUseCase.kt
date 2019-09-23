@@ -14,5 +14,4 @@ class GetPostsUseCase constructor(
         return postsRepository.getPosts()
     }
 
-
 }

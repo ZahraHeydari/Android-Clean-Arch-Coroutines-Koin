@@ -4,7 +4,8 @@ import com.android.post.data.model.ErrorModel
 
 interface UseCaseResponse<Type> {
 
-    fun onSuccess(value: Type)
+    fun onSuccess(result: Type)
 
-    fun onError(error: Throwable, errorModel: ErrorModel?)
+    fun onError(errorModel: ErrorModel?)
 }
+

@@ -1,6 +1,8 @@
 package com.android.post.presentation.posts
 
 import android.os.Bundle
+import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
@@ -23,9 +25,16 @@ class PostsActivity : AppCompatActivity(), OnPostsActivityCallback {
         mAdapter = PostsAdapter()
         activityPostsBinding.postsRecyclerView.adapter = mAdapter
 
+        postViewModel.getPosts()
+
         postViewModel.postsData.observe(this, Observer {
+            activityPostsBinding.postsProgressBar.visibility = View.GONE
             if (it.isNullOrEmpty()) mAdapter?.clearData()
             else mAdapter?.updateData(it)
+        })
+
+        postViewModel.messageData.observe(this, Observer {
+            Toast.makeText(this, it, Toast.LENGTH_LONG).show()
         })
     }
 }

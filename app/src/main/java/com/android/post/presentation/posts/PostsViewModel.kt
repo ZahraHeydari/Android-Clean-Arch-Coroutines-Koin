@@ -1,32 +1,30 @@
 package com.android.post.presentation.posts
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
+import com.android.post.data.model.ErrorModel
 import com.android.post.data.model.Post
 import com.android.post.domain.usecase.GetPostsUseCase
-import kotlinx.coroutines.*
-import kotlin.coroutines.CoroutineContext
+import com.android.post.domain.usecase.base.UseCaseResponse
+import com.android.post.presentation.base.BaseViewModel
 
-class PostsViewModel constructor(private val getPostsUseCase: GetPostsUseCase) : ViewModel(),
-    CoroutineScope {
+class PostsViewModel constructor(private val getPostsUseCase: GetPostsUseCase) : BaseViewModel() {
 
     private val TAG = PostsViewModel::class.java.name
     val postsData = MutableLiveData<List<Post>>()
-    private val job = SupervisorJob()
-    override val coroutineContext: CoroutineContext
-        get() = job + Dispatchers.Default
+    var messageData = MutableLiveData<String>()
 
-    override fun onCleared() {
-        super.onCleared()
-        coroutineContext.cancel()
-    }
+    fun getPosts() {
+        getPostsUseCase.invoke(scope, null, object : UseCaseResponse<List<Post>> {
+            override fun onSuccess(result: List<Post>) {
+                Log.i(TAG,"result: $result")
+                postsData.value = result
+            }
 
-    init {
-        launch { getPosts() }
-    }
-
-    private suspend fun getPosts() {
-        postsData.postValue(getPostsUseCase.run(null))
+            override fun onError(errorModel: ErrorModel?) {
+                messageData.value = errorModel?.message
+            }
+        })
     }
 
 }
