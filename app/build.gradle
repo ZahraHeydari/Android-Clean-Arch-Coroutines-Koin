@@ -35,7 +35,7 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'androidx.appcompat:appcompat:1.0.2'
     implementation 'androidx.cardview:cardview:1.0.0'
     implementation 'androidx.recyclerview:recyclerview:1.0.0'
@@ -50,17 +50,11 @@ dependencies {
     implementation "com.google.code.gson:gson:$gson_version"
     implementation 'com.squareup.okhttp3:logging-interceptor:3.12.1'
 
-    //Rx Libs
-    implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
-    implementation 'io.reactivex.rxjava2:rxjava:2.2.6'
-    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.5.0'
-
     //Koin
     implementation 'org.koin:koin-core:2.0.1'
     implementation 'org.koin:koin-android:2.0.1'
     implementation 'org.koin:koin-android-viewmodel:2.0.1'
     implementation "org.koin:koin-android-architecture:0.8.2"
-
 
     //Coroutines Libs
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.2.0-alpha'
@@ -73,5 +67,6 @@ dependencies {
 
     testImplementation 'org.mockito:mockito-core:2.23.0'
     implementation "com.nhaarman:mockito-kotlin-kt1.1:$mokito_kotlin_version"
-    testImplementation "org.mockito:mockito-inline:$mokito_inline_version"//Use to create mock of objects in tests
+    testImplementation "org.mockito:mockito-inline:$mokito_inline_version"
+//Use to create mock of objects in tests
 }
