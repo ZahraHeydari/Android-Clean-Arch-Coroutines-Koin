@@ -9,30 +9,14 @@
             android:layout_height="match_parent"
             tools:context=".presentation.posts.PostsActivity">
 
-        <androidx.appcompat.widget.AppCompatEditText
-                android:hint="@string/type_your_text"
-                android:paddingEnd="4dp"
-                android:paddingStart="4dp"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
-                android:background="@drawable/background_white_corner_rounded"
-                app:layout_constraintTop_toTopOf="parent"
-                android:id="@+id/posts_filter_edit_text"
-                tools:layout_editor_absoluteX="0dp"/>
 
         <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/posts_recycler_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                app:layout_constraintTop_toBottomOf="@id/posts_filter_edit_text"
-                app:layout_constraintBottom_toBottomOf="parent"
-                android:layout_margin="8dp"
-                tools:layout_editor_absoluteX="0dp"
-                app:layout_constraintVertical_bias="0.05"/>
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_margin="8dp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

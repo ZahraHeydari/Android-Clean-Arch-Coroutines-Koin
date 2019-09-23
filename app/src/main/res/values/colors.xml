@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#344955</color>
-    <color name="colorPrimaryDark">#232F34</color>
-    <color name="colorPrimaryLight">#4A6572</color>
-    <color name="colorAccent">#FF9A33</color>
+    <color name="colorPrimary">#03A9F4</color>
+    <color name="colorPrimaryDark">#0288D1</color>
+    <color name="colorPrimaryLight">#B3E5FC</color>
+    <color name="colorAccent">#FFC107</color>
 
-    <color name="colorTextPrimary">#202020</color>
-    <color name="colorTextSecondary">#737373</color>
-    <color name="gainsBoro">#b9b9b9</color>
+    <color name="colorTextPrimary">#212121</color>
+    <color name="colorTextSecondary">#757575</color>
+    <color name="gainsBoro">#BDBDBD</color>
     <color name="whiteSmoke">#f4f4f4</color>
 </resources>

@@ -27,6 +27,10 @@ android {
     dataBinding {
         enabled = true
     }
+
+    packagingOptions {
+        pickFirst("META-INF/atomicfu.kotlin_module")
+    }
 }
 
 dependencies {

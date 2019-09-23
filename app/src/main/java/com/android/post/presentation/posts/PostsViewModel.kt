@@ -1,32 +1,32 @@
 package com.android.post.presentation.posts
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.android.post.data.model.ErrorModel
 import com.android.post.data.model.Post
 import com.android.post.domain.usecase.GetPostsUseCase
-import com.android.post.domain.usecase.base.UseCaseResponse
-import io.reactivex.disposables.CompositeDisposable
+import kotlinx.coroutines.*
+import kotlin.coroutines.CoroutineContext
 
-class PostsViewModel constructor(private val getPostsUseCase: GetPostsUseCase) : ViewModel() {
+class PostsViewModel constructor(private val getPostsUseCase: GetPostsUseCase) : ViewModel(),
+    CoroutineScope {
 
     private val TAG = PostsViewModel::class.java.name
-    private val compositeDisposable: CompositeDisposable = CompositeDisposable()
     val postsData = MutableLiveData<List<Post>>()
+    private val job = SupervisorJob()
+    override val coroutineContext: CoroutineContext
+        get() = job + Dispatchers.Default
 
-    fun getPosts() {
-        getPostsUseCase.execute(compositeDisposable, null, object : UseCaseResponse<List<Post>> {
-            override fun onSuccess(value: List<Post>) {
-                Log.i(TAG, "getPostsUseCase: $value")
-                postsData.value = value
-            }
+    override fun onCleared() {
+        super.onCleared()
+        coroutineContext.cancel()
+    }
 
-            override fun onError(error: Throwable, errorModel: ErrorModel?) {
-                error.printStackTrace()
-            }
+    init {
+        launch { getPosts() }
+    }
 
-        })
+    private suspend fun getPosts() {
+        postsData.postValue(getPostsUseCase.run(null))
     }
 
 }

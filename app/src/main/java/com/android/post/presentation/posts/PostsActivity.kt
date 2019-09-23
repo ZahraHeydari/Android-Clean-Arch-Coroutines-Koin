@@ -14,7 +14,6 @@ class PostsActivity : AppCompatActivity(), OnPostsActivityCallback {
     private val TAG = PostsActivity::class.java.name
     private lateinit var activityPostsBinding: ActivityPostsBinding
     private var mAdapter: PostsAdapter? = null
-    // Lazy Inject ViewModel
     val postViewModel: PostsViewModel by viewModel()
 
 
@@ -23,8 +22,6 @@ class PostsActivity : AppCompatActivity(), OnPostsActivityCallback {
         activityPostsBinding = DataBindingUtil.setContentView(this, R.layout.activity_posts)
         mAdapter = PostsAdapter()
         activityPostsBinding.postsRecyclerView.adapter = mAdapter
-
-        postViewModel.getPosts()
 
         postViewModel.postsData.observe(this, Observer {
             if (it.isNullOrEmpty()) mAdapter?.clearData()

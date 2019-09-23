@@ -16,8 +16,6 @@ class MainApplication : Application() {
         super.onCreate()
         MultiDex.install(this)
 
-
-        // Start Koin
         startKoin {
             androidLogger()
             androidContext(this@MainApplication)

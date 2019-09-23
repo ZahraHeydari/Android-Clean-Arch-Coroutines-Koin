@@ -26,7 +26,6 @@ val PostModule = module {
     single { createGetPostsUseCase(get(), createApiErrorHandle()) }
 
     // single instance of PostsRepository
-    //single<PostsRepository> { PostsRepositoryImp(get()) }
     single { createPostRepository(get()) }
 
     single { createService(get()) }
