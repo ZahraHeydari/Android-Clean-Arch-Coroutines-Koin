@@ -3,7 +3,12 @@
 A Simple Android Mobile Application which has been implemented using Clean Architecture alongside MVVM design.
 
 
-### Clean Arch ### Coroutines ###Koin ###MVVM ###LiveData
+### Technologies & Methodologies
+- Clean Architecture
+- Coroutines
+- Koin 
+- MVVM Pattern
+- LiveData
 
 
 ### The App Scenario
