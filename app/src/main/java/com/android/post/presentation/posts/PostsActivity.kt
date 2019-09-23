@@ -16,7 +16,7 @@ class PostsActivity : AppCompatActivity(), OnPostsActivityCallback {
     private val TAG = PostsActivity::class.java.name
     private lateinit var activityPostsBinding: ActivityPostsBinding
     private var mAdapter: PostsAdapter? = null
-    val postViewModel: PostsViewModel by viewModel()
+    private val postViewModel: PostsViewModel by viewModel()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {

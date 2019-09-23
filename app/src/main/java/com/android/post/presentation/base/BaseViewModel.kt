@@ -12,6 +12,7 @@ abstract class BaseViewModel : ViewModel() {
         Job() + Dispatchers.Main
     )
 
+    // Cancel the job when the view model is destroyed
     override fun onCleared() {
         super.onCleared()
         scope.cancel()

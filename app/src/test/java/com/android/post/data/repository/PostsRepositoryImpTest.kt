@@ -1,15 +1,11 @@
 package com.android.post.data.repository
 
 import com.android.post.data.model.Post
-import com.android.post.domain.usecase.GetPostsUseCase
-import com.android.post.presentation.posts.PostsViewModel
 import com.nhaarman.mockito_kotlin.mock
-import io.reactivex.Single
+import kotlinx.coroutines.runBlocking
 import org.hamcrest.CoreMatchers
 import org.hamcrest.MatcherAssert
 import org.junit.Before
-
-import org.junit.Assert.*
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.Mock
@@ -30,8 +26,8 @@ class PostsRepositoryImpTest {
     }
 
     @Test
-    fun getPostsData() {
-        val posts = mock<Single<List<Post>>>()
+    fun getPostsData() = runBlocking {
+        val posts = mock<List<Post>>()
         Mockito.`when`(postsRepository.getPosts()).thenReturn(posts)
 
         val result = postsRepository.getPosts()
