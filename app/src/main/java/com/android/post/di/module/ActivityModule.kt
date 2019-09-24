@@ -7,18 +7,16 @@ import com.android.post.data.source.remote.ApiService
 import com.android.post.domain.repository.PostsRepository
 import com.android.post.domain.usecase.GetPostsUseCase
 import com.android.post.presentation.posts.PostsViewModel
-import com.google.gson.Gson
-import com.google.gson.GsonBuilder
+import com.squareup.moshi.Moshi
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.converter.moshi.MoshiConverterFactory
 import java.util.concurrent.TimeUnit
 
 val PostModule = module {
-
 
     // PostsViewModel ViewModel
     viewModel { PostsViewModel(get()) }
@@ -34,9 +32,9 @@ val PostModule = module {
 
     single { createOkHttpClient() }
 
-    single { createGsonConverterFactory() }
+    single { createMoshiConverterFactory() }
 
-    single { createGson() }
+    single { createMoshi() }
 }
 
 fun createOkHttpClient(): OkHttpClient {
@@ -52,16 +50,16 @@ fun createRetrofit(okHttpClient: OkHttpClient, url: String):Retrofit {
     return Retrofit.Builder()
         .baseUrl(url)
         .client(okHttpClient)
-        .addConverterFactory(GsonConverterFactory.create()).build()
+        .addConverterFactory(MoshiConverterFactory.create()).build()
 }
 
 
-fun createGson(): Gson {
-    return GsonBuilder().create()
+fun createMoshi(): Moshi {
+    return Moshi.Builder().build()
 }
 
-fun createGsonConverterFactory(): GsonConverterFactory {
-    return GsonConverterFactory.create()
+fun createMoshiConverterFactory(): MoshiConverterFactory {
+    return MoshiConverterFactory.create()
 }
 
 

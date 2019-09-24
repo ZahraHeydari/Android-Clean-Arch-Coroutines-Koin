@@ -31,7 +31,7 @@ android versions targeted:
 ### Used libraries
 
 1. [GitHub](http://square.github.io/retrofit/) - retrofit
-2. [GitHub](https://github.com/google/gson) - gson
+2. [GitHub](https://github.com/square/moshi) - moshi
 3. [Github](https://github.com/casidiablo/multidex) - Multidex
 
 

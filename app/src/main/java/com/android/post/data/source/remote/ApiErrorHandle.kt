@@ -1,9 +1,6 @@
 package com.android.post.data.source.remote
 
-import android.util.Log
 import com.android.post.data.model.ErrorModel
-import com.google.gson.Gson
-import com.google.gson.JsonObject
 import okhttp3.ResponseBody
 import retrofit2.HttpException
 import java.io.IOException
@@ -53,10 +50,7 @@ class ApiErrorHandle {
     private fun getHttpError(body: ResponseBody?): ErrorModel {
         return try {
             // use response body to get error detail
-            val result = body?.string()
-            Log.d("getHttpError", "getErrorMessage() called with: errorBody = [$result]")
-            val json = Gson().fromJson(result, JsonObject::class.java)
-            ErrorModel(json.toString(), 400, ErrorModel.ErrorStatus.BAD_RESPONSE)
+            ErrorModel(body.toString(), 400, ErrorModel.ErrorStatus.BAD_RESPONSE)
         } catch (e: Throwable) {
             e.printStackTrace()
             ErrorModel(message = e.message, errorStatus = ErrorModel.ErrorStatus.NOT_DEFINED)

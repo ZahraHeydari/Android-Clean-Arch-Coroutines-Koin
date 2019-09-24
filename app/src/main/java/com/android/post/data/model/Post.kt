@@ -1,11 +1,12 @@
 package com.android.post.data.model
 
-import com.google.gson.annotations.SerializedName
+import com.squareup.moshi.JsonClass
 
 
+@JsonClass(generateAdapter = true)
 data class Post(
-    @SerializedName("userId") var userId: Int,
-    @SerializedName("id") var id: Int,
-    @SerializedName("title") var title: String,
-    @SerializedName("body") var body: String){
-}
+    var userId: Int,
+    var id: Int,
+    var title: String,
+    var body: String
+)
