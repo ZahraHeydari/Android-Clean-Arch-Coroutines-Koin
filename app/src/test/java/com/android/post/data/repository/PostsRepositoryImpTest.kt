@@ -1,34 +1,31 @@
 package com.android.post.data.repository
 
 import com.android.post.data.model.Post
-import com.nhaarman.mockito_kotlin.mock
+import io.mockk.MockKAnnotations
+import io.mockk.every
+import io.mockk.impl.annotations.MockK
+import io.mockk.mockk
 import kotlinx.coroutines.runBlocking
 import org.hamcrest.CoreMatchers
 import org.hamcrest.MatcherAssert
 import org.junit.Before
 import org.junit.Test
-import org.junit.runner.RunWith
-import org.mockito.Mock
-import org.mockito.Mockito
-import org.mockito.MockitoAnnotations
-import org.mockito.junit.MockitoJUnitRunner
 
-@RunWith(MockitoJUnitRunner::class)
+
 class PostsRepositoryImpTest {
 
-    @Mock
+    @MockK
     lateinit var postsRepository: PostsRepositoryImp
 
     @Before
     fun setUp() {
-        MockitoAnnotations.initMocks(this) //for initialization
-        postsRepository = Mockito.mock(PostsRepositoryImp::class.java)
+        MockKAnnotations.init(this) //for initialization
     }
 
     @Test
     fun getPostsData() = runBlocking {
-        val posts = mock<List<Post>>()
-        Mockito.`when`(postsRepository.getPosts()).thenReturn(posts)
+        val posts = mockk<List<Post>>()
+        every { runBlocking { postsRepository.getPosts() } } returns (posts)
 
         val result = postsRepository.getPosts()
         MatcherAssert.assertThat(

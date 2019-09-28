@@ -65,9 +65,6 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
-
-    testImplementation 'org.mockito:mockito-core:2.23.0'
-    implementation "com.nhaarman:mockito-kotlin-kt1.1:$mokito_kotlin_version"
-    testImplementation "org.mockito:mockito-inline:$mokito_inline_version"
+    testImplementation "io.mockk:mockk:$mockk_version"
 //Use to create mock of objects in tests
 }
