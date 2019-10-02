@@ -63,6 +63,7 @@ dependencies {
 
     //Test Libs
     testImplementation 'junit:junit:4.12'
+    testImplementation "org.koin:koin-test:$koin_version"
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     testImplementation "io.mockk:mockk:$mockk_version"
