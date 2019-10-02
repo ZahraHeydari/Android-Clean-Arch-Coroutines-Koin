@@ -12,17 +12,21 @@ class PostsViewModel constructor(private val getPostsUseCase: GetPostsUseCase) :
 
     private val TAG = PostsViewModel::class.java.name
     val postsData = MutableLiveData<List<Post>>()
-    var messageData = MutableLiveData<String>()
+    val showProgressbar = MutableLiveData<Boolean>()
+    val messageData = MutableLiveData<String>()
 
     fun getPosts() {
+        showProgressbar.value = true
         getPostsUseCase.invoke(scope, null, object : UseCaseResponse<List<Post>> {
             override fun onSuccess(result: List<Post>) {
                 Log.i(TAG,"result: $result")
                 postsData.value = result
+                showProgressbar.value = false
             }
 
             override fun onError(errorModel: ErrorModel?) {
                 messageData.value = errorModel?.message
+                showProgressbar.value = false
             }
         })
     }

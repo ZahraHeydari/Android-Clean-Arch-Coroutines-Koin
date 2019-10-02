@@ -8,6 +8,8 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import com.android.post.R
 import com.android.post.databinding.ActivityPostsBinding
+import com.android.post.extension.isNetworkAvailable
+import kotlinx.android.synthetic.main.activity_posts.*
 import org.koin.android.viewmodel.ext.android.viewModel
 
 
@@ -25,7 +27,10 @@ class PostsActivity : AppCompatActivity(), OnPostsActivityCallback {
         mAdapter = PostsAdapter()
         activityPostsBinding.postsRecyclerView.adapter = mAdapter
 
-        postViewModel.getPosts()
+        if (isNetworkAvailable()) {
+            postViewModel.getPosts()
+        }
+        else Toast.makeText(this, "Internet is required", Toast.LENGTH_SHORT).show()
 
         postViewModel.postsData.observe(this, Observer {
             activityPostsBinding.postsProgressBar.visibility = View.GONE
@@ -35,6 +40,10 @@ class PostsActivity : AppCompatActivity(), OnPostsActivityCallback {
 
         postViewModel.messageData.observe(this, Observer {
             Toast.makeText(this, it, Toast.LENGTH_LONG).show()
+        })
+
+        postViewModel.showProgressbar.observe(this, Observer { isVisible ->
+            posts_progress_bar.visibility = if (isVisible) View.VISIBLE else View.GONE
         })
     }
 }
