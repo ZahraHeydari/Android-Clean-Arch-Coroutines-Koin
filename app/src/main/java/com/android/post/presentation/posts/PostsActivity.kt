@@ -29,8 +29,7 @@ class PostsActivity : AppCompatActivity(), OnPostsActivityCallback {
 
         postViewModel.postsData.observe(this, Observer {
             activityPostsBinding.postsProgressBar.visibility = View.GONE
-            if (it.isNullOrEmpty()) mAdapter?.clearData()
-            else mAdapter?.updateData(it)
+            mAdapter?.mPostList = it
         })
 
         postViewModel.messageData.observe(this, Observer {
