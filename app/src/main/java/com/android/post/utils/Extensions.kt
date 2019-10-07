@@ -1,4 +1,4 @@
-package com.android.post.extension
+package com.android.post.utils
 
 import android.content.Context
 import android.net.ConnectivityManager

@@ -8,7 +8,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import com.android.post.R
 import com.android.post.databinding.ActivityPostsBinding
-import com.android.post.extension.isNetworkAvailable
+import com.android.post.utils.isNetworkAvailable
 import kotlinx.android.synthetic.main.activity_posts.*
 import org.koin.android.viewmodel.ext.android.viewModel
 
