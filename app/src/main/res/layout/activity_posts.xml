@@ -8,7 +8,6 @@
             android:layout_height="match_parent"
             tools:context=".presentation.posts.PostsActivity">
 
-
         <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/posts_recycler_view"
                 android:layout_width="match_parent"
@@ -21,6 +20,7 @@
                 android:id="@+id/posts_progress_bar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:visibility="gone"
                 style="@style/Widget.AppCompat.ProgressBar"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
