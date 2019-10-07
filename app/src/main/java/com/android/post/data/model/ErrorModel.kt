@@ -4,6 +4,14 @@ package com.android.post.data.model
  * This class designed to show different types of errors through error status & message
  *
  * */
+
+private const val NO_CONNECTION_ERROR_MESSAGE = "No connection!"
+private const val BAD_RESPONSE_ERROR_MESSAGE = "Bad response!"
+private const val TIME_OUT_ERROR_MESSAGE = "Time out!"
+private const val EMPTY_RESPONSE_ERROR_MESSAGE = "Empty response!"
+private const val NOT_DEFINED_ERROR_MESSAGE = "Not defined!"
+private const val UNAUTHORIZED_ERROR_MESSAGE = "Unauthorized!"
+
 data class ErrorModel(
     val message: String?,
     val code: Int?,
@@ -15,12 +23,12 @@ data class ErrorModel(
 
     fun getErrorMessage(): String {
         return when (errorStatus) {
-            ErrorStatus.NO_CONNECTION -> "No connection!"
-            ErrorStatus.BAD_RESPONSE -> "Bad response!"
-            ErrorStatus.TIMEOUT -> "Time out!"
-            ErrorStatus.EMPTY_RESPONSE -> "Empty response!"
-            ErrorStatus.NOT_DEFINED -> "Not defined!"
-            ErrorStatus.UNAUTHORIZED -> "Unauthorized!"
+            ErrorStatus.NO_CONNECTION -> NO_CONNECTION_ERROR_MESSAGE
+            ErrorStatus.BAD_RESPONSE -> BAD_RESPONSE_ERROR_MESSAGE
+            ErrorStatus.TIMEOUT -> TIME_OUT_ERROR_MESSAGE
+            ErrorStatus.EMPTY_RESPONSE -> EMPTY_RESPONSE_ERROR_MESSAGE
+            ErrorStatus.NOT_DEFINED -> NOT_DEFINED_ERROR_MESSAGE
+            ErrorStatus.UNAUTHORIZED -> UNAUTHORIZED_ERROR_MESSAGE
         }
     }
 
