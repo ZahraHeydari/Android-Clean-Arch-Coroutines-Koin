@@ -30,7 +30,7 @@ class PostsActivity : AppCompatActivity(), OnPostsActivityCallback {
         if (isNetworkAvailable()) {
             postViewModel.getPosts()
         }
-        else Toast.makeText(this, "Internet is required", Toast.LENGTH_SHORT).show()
+        else Toast.makeText(this, getString(R.string.no_internet_connection), Toast.LENGTH_SHORT).show()
 
         postViewModel.postsData.observe(this, Observer {
             activityPostsBinding.postsProgressBar.visibility = View.GONE

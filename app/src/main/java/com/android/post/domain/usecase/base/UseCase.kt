@@ -10,7 +10,7 @@ abstract class UseCase<Type, in Params>(private val apiErrorHandle: ApiErrorHand
 
     abstract suspend fun run(params: Params? = null): Type
 
-    open operator fun invoke(
+    fun invoke(
         scope: CoroutineScope,
         params: Params?,
         onResult: (UseCaseResponse<Type>)

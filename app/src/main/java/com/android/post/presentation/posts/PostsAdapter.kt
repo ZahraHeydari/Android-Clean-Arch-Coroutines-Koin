@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.android.post.R
 import com.android.post.data.model.Post
 import com.android.post.databinding.HolderPostBinding
+import org.slf4j.LoggerFactory
 import kotlin.properties.Delegates
 
 class PostsAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {

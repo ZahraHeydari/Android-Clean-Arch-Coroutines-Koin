@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Post</string>
     <string name="type_your_text">Type your text to find ...</string>
+    <string name="no_internet_connection">No Internet Connection!</string>
 </resources>
