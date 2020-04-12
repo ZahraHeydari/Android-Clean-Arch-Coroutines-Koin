@@ -1,6 +1,6 @@
-package com.android.post.data.source.remote
+package com.android.post.domain.exception
 
-import com.android.post.data.model.ErrorModel
+import com.android.post.domain.model.ErrorModel
 import okhttp3.ResponseBody
 import retrofit2.HttpException
 import java.io.IOException
@@ -8,7 +8,7 @@ import java.net.SocketTimeoutException
 
 /**
  * This class trace exceptions(api call or parse data or connection errors) &
- * depending on what exception returns a [ErrorModel]
+ * depending on what exception returns [ErrorModel]
  *
  * */
 class ApiErrorHandle {

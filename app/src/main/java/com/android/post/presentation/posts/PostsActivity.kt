@@ -10,17 +10,18 @@ import com.android.post.R
 import com.android.post.databinding.ActivityPostsBinding
 import com.android.post.utils.isNetworkAvailable
 import kotlinx.android.synthetic.main.activity_posts.*
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.koin.android.viewmodel.ext.android.viewModel
 
 
-class PostsActivity : AppCompatActivity(), OnPostsActivityCallback {
+class PostsActivity : AppCompatActivity() {
 
-    private val TAG = PostsActivity::class.java.name
     private lateinit var activityPostsBinding: ActivityPostsBinding
     private var mAdapter: PostsAdapter? = null
     private val postViewModel: PostsViewModel by viewModel()
 
 
+    @ExperimentalCoroutinesApi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         activityPostsBinding = DataBindingUtil.setContentView(this, R.layout.activity_posts)
@@ -29,8 +30,11 @@ class PostsActivity : AppCompatActivity(), OnPostsActivityCallback {
 
         if (isNetworkAvailable()) {
             postViewModel.getPosts()
-        }
-        else Toast.makeText(this, getString(R.string.no_internet_connection), Toast.LENGTH_SHORT).show()
+        } else Toast.makeText(
+            this,
+            getString(R.string.no_internet_connection),
+            Toast.LENGTH_SHORT
+        ).show()
 
         postViewModel.postsData.observe(this, Observer {
             activityPostsBinding.postsProgressBar.visibility = View.GONE
@@ -44,5 +48,9 @@ class PostsActivity : AppCompatActivity(), OnPostsActivityCallback {
         postViewModel.showProgressbar.observe(this, Observer { isVisible ->
             posts_progress_bar.visibility = if (isVisible) View.VISIBLE else View.GONE
         })
+    }
+
+    companion object {
+        private val TAG = PostsActivity::class.java.name
     }
 }

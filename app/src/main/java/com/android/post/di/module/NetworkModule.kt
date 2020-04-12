@@ -2,7 +2,7 @@ package com.android.post.di.module
 
 import com.android.post.BuildConfig
 import com.android.post.data.repository.PostsRepositoryImp
-import com.android.post.data.source.remote.ApiErrorHandle
+import com.android.post.domain.exception.ApiErrorHandle
 import com.android.post.data.source.remote.ApiService
 import com.android.post.domain.repository.PostsRepository
 import com.android.post.domain.usecase.GetPostsUseCase

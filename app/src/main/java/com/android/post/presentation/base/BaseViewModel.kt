@@ -8,7 +8,7 @@ import kotlinx.coroutines.cancel
 
 abstract class BaseViewModel : ViewModel() {
 
-    val scope = CoroutineScope(
+    private val scope = CoroutineScope(
         Job() + Dispatchers.Main
     )
 

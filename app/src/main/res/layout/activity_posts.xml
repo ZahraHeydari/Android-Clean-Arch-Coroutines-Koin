@@ -14,7 +14,7 @@
                 android:layout_height="wrap_content"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintTop_toTopOf="parent"
-                android:layout_margin="8dp" />
+                android:padding="8dp"/>
 
         <androidx.core.widget.ContentLoadingProgressBar
                 android:id="@+id/posts_progress_bar"

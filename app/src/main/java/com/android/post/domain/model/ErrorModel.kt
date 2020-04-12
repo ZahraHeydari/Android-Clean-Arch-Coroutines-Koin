@@ -1,4 +1,4 @@
-package com.android.post.data.model
+package com.android.post.domain.model
 
 /**
  * This class designed to show different types of errors through error status & message

@@ -1,4 +1,4 @@
-package com.android.post.data.model
+package com.android.post.domain.model
 
 import com.squareup.moshi.JsonClass
 

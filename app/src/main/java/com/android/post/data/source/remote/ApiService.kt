@@ -1,7 +1,6 @@
 package com.android.post.data.source.remote
 
-import com.android.post.data.model.Post
-import com.android.post.domain.usecase.base.UseCaseResponse
+import com.android.post.domain.model.Post
 import retrofit2.http.GET
 
 interface ApiService {

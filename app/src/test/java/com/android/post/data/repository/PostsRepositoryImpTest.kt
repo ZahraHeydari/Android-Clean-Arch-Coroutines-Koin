@@ -1,6 +1,6 @@
 package com.android.post.data.repository
 
-import com.android.post.data.model.Post
+import com.android.post.domain.model.Post
 import io.mockk.MockKAnnotations
 import io.mockk.every
 import io.mockk.impl.annotations.MockK

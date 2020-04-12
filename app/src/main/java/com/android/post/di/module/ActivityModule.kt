@@ -6,7 +6,6 @@ import org.koin.dsl.module
 
 val PostModule = module {
 
-    // PostsViewModel ViewModel
     viewModel { PostsViewModel(get()) }
 
     single { createGetPostsUseCase(get(), createApiErrorHandle()) }

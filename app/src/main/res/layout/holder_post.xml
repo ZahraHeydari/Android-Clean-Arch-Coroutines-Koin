@@ -5,7 +5,7 @@
 
         <import type="android.view.View"/>
 
-        <variable name="post" type="com.android.post.data.model.Post"/>
+        <variable name="post" type="com.android.post.domain.model.Post"/>
     </data>
 
 
@@ -14,6 +14,7 @@
             app:cardUseCompatPadding="true"
             app:cardElevation="4dp"
             app:cardCornerRadius="4dp"
+            android:padding="4dp"
             android:layout_width="match_parent"
             android:layout_height="200dp">
 
@@ -23,7 +24,7 @@
                 android:layout_height="match_parent">
 
             <androidx.appcompat.widget.AppCompatTextView
-                    android:layout_margin="4dp"
+                    android:layout_margin="8dp"
                     android:id="@+id/post_title_text_view"
                     android:text="@{post.title}"
                     android:textColor="@color/colorTextPrimary"
@@ -33,7 +34,7 @@
 
 
             <androidx.appcompat.widget.AppCompatTextView
-                    android:layout_margin="4dp"
+                    android:layout_margin="8dp"
                     android:layout_below="@id/post_title_text_view"
                     android:id="@+id/post_body_text_view"
                     android:text="@{post.body}"

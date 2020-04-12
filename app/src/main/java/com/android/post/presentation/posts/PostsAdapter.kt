@@ -6,14 +6,12 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.RecyclerView
 import com.android.post.R
-import com.android.post.data.model.Post
+import com.android.post.domain.model.Post
 import com.android.post.databinding.HolderPostBinding
-import org.slf4j.LoggerFactory
 import kotlin.properties.Delegates
 
 class PostsAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    private val TAG = PostsAdapter::class.java.simpleName
     var mPostList: List<Post> by Delegates.observable(emptyList()) { _, _, _ ->
         notifyDataSetChanged()
     }
@@ -43,5 +41,9 @@ class PostsAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         fun onBind(post: Post) {
             (viewDataBinding as HolderPostBinding).post = post
         }
+    }
+
+    companion object {
+        private val TAG = PostsAdapter::class.java.simpleName
     }
 }
