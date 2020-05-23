@@ -1,47 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
-        <import type="android.view.View"/>
+        <import type="android.view.View" />
 
-        <variable name="post" type="com.android.post.domain.model.Post"/>
+        <variable
+                name="post"
+                type="com.android.post.domain.model.Post" />
     </data>
 
 
     <androidx.cardview.widget.CardView
-            android:layout_margin="4dp"
-            app:cardUseCompatPadding="true"
-            app:cardElevation="4dp"
-            app:cardCornerRadius="4dp"
-            android:padding="4dp"
             android:layout_width="match_parent"
-            android:layout_height="200dp">
+            android:layout_height="200dp"
+            android:layout_margin="4dp"
+            android:padding="4dp"
+            app:cardCornerRadius="4dp"
+            app:cardElevation="4dp"
+            app:cardUseCompatPadding="true">
 
         <RelativeLayout
-                android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
             <androidx.appcompat.widget.AppCompatTextView
-                    android:layout_margin="8dp"
                     android:id="@+id/post_title_text_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
                     android:text="@{post.title}"
                     android:textColor="@color/colorTextPrimary"
-                    android:textSize="@dimen/title"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-
+                    android:textSize="@dimen/title" />
 
             <androidx.appcompat.widget.AppCompatTextView
-                    android:layout_margin="8dp"
-                    android:layout_below="@id/post_title_text_view"
                     android:id="@+id/post_body_text_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/post_title_text_view"
+                    android:layout_margin="8dp"
                     android:text="@{post.body}"
                     android:textColor="@color/colorTextSecondary"
-                    android:textSize="@dimen/body2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    android:textSize="@dimen/body2" />
 
         </RelativeLayout>
 
