@@ -12,16 +12,17 @@
                 android:id="@+id/posts_recycler_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:padding="8dp"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintTop_toTopOf="parent"
-                android:padding="8dp"/>
+                tools:listitem="@layout/holder_post" />
 
         <androidx.core.widget.ContentLoadingProgressBar
                 android:id="@+id/posts_progress_bar"
+                style="@style/Widget.AppCompat.ProgressBar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:visibility="gone"
-                style="@style/Widget.AppCompat.ProgressBar"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
