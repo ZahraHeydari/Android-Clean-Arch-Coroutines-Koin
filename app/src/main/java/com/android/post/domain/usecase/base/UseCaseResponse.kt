@@ -1,11 +1,11 @@
 package com.android.post.domain.usecase.base
 
-import com.android.post.domain.model.ErrorModel
+import com.android.post.domain.model.ApiError
 
 interface UseCaseResponse<Type> {
 
     fun onSuccess(result: Type)
 
-    fun onError(errorModel: ErrorModel?)
+    fun onError(apiError: ApiError?)
 }
 

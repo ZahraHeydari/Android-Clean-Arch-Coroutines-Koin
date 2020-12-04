@@ -19,14 +19,14 @@ import org.koin.android.viewmodel.ext.android.viewModel
 class PostsActivity : AppCompatActivity() {
 
     private lateinit var activityPostsBinding: ActivityPostsBinding
-    private var mAdapter: PostsAdapter? = null
+    private var mAdapter: PostsAdapter? = PostsAdapter()
     private val postViewModel: PostsViewModel by viewModel()
 
-    @ExperimentalCoroutinesApi
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         activityPostsBinding = DataBindingUtil.setContentView(this, R.layout.activity_posts)
-        mAdapter = PostsAdapter()
+
         activityPostsBinding.postsRecyclerView.adapter = mAdapter
 
         if (isNetworkAvailable()) {
@@ -40,6 +40,7 @@ class PostsActivity : AppCompatActivity() {
         }
 
         with(postViewModel) {
+
             postsData.observe(this@PostsActivity, Observer {
                 activityPostsBinding.postsProgressBar.visibility = GONE
                 mAdapter?.mPostList = it
@@ -53,6 +54,12 @@ class PostsActivity : AppCompatActivity() {
                 posts_progress_bar.visibility = if (isVisible) VISIBLE else GONE
             })
         }
+    }
+
+
+    override fun onDestroy() {
+        mAdapter = null
+        super.onDestroy()
     }
 
     companion object {

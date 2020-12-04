@@ -11,43 +11,57 @@
                 type="com.android.post.domain.model.Post" />
     </data>
 
-
-    <androidx.cardview.widget.CardView
+    <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:layout_margin="4dp"
-            android:padding="4dp"
-            app:cardCornerRadius="4dp"
-            app:cardElevation="4dp"
-            app:cardUseCompatPadding="true">
+            android:layout_height="wrap_content">
 
-        <RelativeLayout
+        <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:layout_height="0dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintDimensionRatio="2:1"
+                android:padding="4dp"
+                app:cardCornerRadius="4dp"
+                app:cardElevation="4dp"
+                app:cardUseCompatPadding="true">
 
-            <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/post_title_text_view"
+            <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="8dp"
-                    android:text="@{post.title}"
-                    android:textColor="@color/colorTextPrimary"
-                    android:textSize="@dimen/title" />
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
 
-            <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/post_body_text_view"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/post_title_text_view"
-                    android:layout_margin="8dp"
-                    android:text="@{post.body}"
-                    android:textColor="@color/colorTextSecondary"
-                    android:textSize="@dimen/body2" />
+                <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/post_title_text_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:text="@{post.title}"
+                        android:textColor="@color/colorTextPrimary"
+                        android:textSize="@dimen/title" />
 
-        </RelativeLayout>
+                <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/post_body_text_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/post_title_text_view"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:text="@{post.body}"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:textColor="@color/colorTextSecondary"
+                        android:textSize="@dimen/body2" />
 
-    </androidx.cardview.widget.CardView>
+            </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
 
 
 </layout>

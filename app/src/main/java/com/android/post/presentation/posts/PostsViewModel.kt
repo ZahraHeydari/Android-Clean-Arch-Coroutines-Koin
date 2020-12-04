@@ -2,34 +2,41 @@ package com.android.post.presentation.posts
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
-import com.android.post.domain.model.ErrorModel
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.android.post.domain.model.ApiError
 import com.android.post.domain.model.Post
 import com.android.post.domain.usecase.GetPostsUseCase
 import com.android.post.domain.usecase.base.UseCaseResponse
-import com.android.post.presentation.base.BaseViewModel
-import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.cancel
 
-class PostsViewModel constructor(private val getPostsUseCase: GetPostsUseCase) : BaseViewModel() {
+
+class PostsViewModel constructor(private val getPostsUseCase: GetPostsUseCase) : ViewModel() {
 
     val postsData = MutableLiveData<List<Post>>()
     val showProgressbar = MutableLiveData<Boolean>()
     val messageData = MutableLiveData<String>()
 
-    @ExperimentalCoroutinesApi
     fun getPosts() {
         showProgressbar.value = true
-        getPostsUseCase.invoke(null, object : UseCaseResponse<List<Post>> {
-            override fun onSuccess(result: List<Post>) {
-                Log.i(TAG, "result: $result")
-                postsData.value = result
-                showProgressbar.value = false
-            }
+        getPostsUseCase.invoke(viewModelScope, null, object : UseCaseResponse<List<Post>> {
+                override fun onSuccess(result: List<Post>) {
+                    Log.i(TAG, "result: $result")
+                    postsData.value = result
+                    showProgressbar.value = false
+                }
 
-            override fun onError(errorModel: ErrorModel?) {
-                messageData.value = errorModel?.message
-                showProgressbar.value = false
-            }
-        })
+                override fun onError(apiError: ApiError?) {
+                    messageData.value = apiError?.getErrorMessage()
+                    showProgressbar.value = false
+                }
+            },
+        )
+    }
+
+    override fun onCleared() {
+        viewModelScope.cancel()
+        super.onCleared()
     }
 
     companion object {

@@ -23,27 +23,19 @@ class PostsAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         return PostViewHolder(holderPostBinding)
     }
 
-    override fun getItemCount(): Int {
-        return if (mPostList.isNullOrEmpty()) 0 else mPostList.size
-    }
+    override fun getItemCount(): Int = if (mPostList.isNullOrEmpty()) 0 else mPostList.size
 
-    private fun getItem(position: Int): Post {
-        return mPostList[position]
-    }
+    private fun getItem(position: Int): Post = mPostList[position]
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         (holder as PostViewHolder).onBind(getItem(position))
     }
 
-    inner class PostViewHolder(private val viewDataBinding: ViewDataBinding) :
+    private inner class PostViewHolder(private val viewDataBinding: ViewDataBinding) :
         RecyclerView.ViewHolder(viewDataBinding.root) {
 
         fun onBind(post: Post) {
             (viewDataBinding as HolderPostBinding).post = post
         }
-    }
-
-    companion object {
-        private val TAG = PostsAdapter::class.java.simpleName
     }
 }
